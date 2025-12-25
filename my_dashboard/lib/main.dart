@@ -16,22 +16,28 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
 
+        // warna
         colorScheme: ColorScheme.fromSeed(
           seedColor: const Color(0xFF009688),
           background: const Color(0xFFF5F7FA),
         ),
+        textTheme: GoogleFonts.interTextTheme(
+          Theme.of(context).textTheme,
+        )
       ),
       home: const DashboardPage(),
     );
   }
 }
 
+//main page
 class DashboardPage extends StatelessWidget {
   const DashboardPage ({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //side bar (kiri)
       body: Row(
         children: [
           Container(
@@ -41,7 +47,8 @@ class DashboardPage extends StatelessWidget {
               child: Text("Sidebar Area"),
             ),
           ),
-
+          
+          //main bar
           Expanded(
             child: Container(
               color: Theme.of(context).colorScheme.background,
