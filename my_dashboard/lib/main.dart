@@ -40,10 +40,8 @@ class DashboardPage extends StatelessWidget {
       body: Row(
         children: [
           // --- BAGIAN 1: SIDEBAR (KIRI) ---
-          Container(
-            width: 250,
-            // PERBAIKAN 4: 'Colors' huruf depan Besar
-            color: Colors.white,
+          SizedBox(
+            width: 280,
             child: Column(
               children: [
                 // 1. AREA LOGO
@@ -64,51 +62,68 @@ class DashboardPage extends StatelessWidget {
                 const SizedBox(height: 20),
 
                 // 2. MENU ITEM 1 (DASHBOARD - AKTIF)
-                ListTile(
-                  onTap: () {},
-                  leading: Icon(
-                    Icons.dashboard_rounded,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                  title: Text(
-                    "Dashboard",
-                    style: GoogleFonts.inter(
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).colorScheme.primary,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: ListTile(
+                      onTap: () {},
+                      selected: false,
+                      leading: Icon(
+                        Icons.dashboard_rounded,
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                      title: Text(
+                        "Dashboard",
+                        style: GoogleFonts.inter(
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                      ),
                     ),
                   ),
-                  tileColor: Theme.of(context).colorScheme.primary.withOpacity(0.1),
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 24),
                 ),
 
-                // 3. MENU ITEM 2 (COURSES - NON AKTIF)
-                ListTile(
-                  onTap: () {},
-                  leading: const Icon(Icons.book_rounded, color: Colors.grey),
-                  title: Text(
-                    "My Courses",
-                    style: GoogleFonts.inter(
-                      fontWeight: FontWeight.w500,
-                      color: Colors.grey,
+                const SizedBox(height: 4),
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  child: ListTile(
+                    onTap: () {},
+
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    leading: const Icon(Icons.dashboard_rounded, color: Colors.grey),
+                    title: Text(
+                      "My Courses",
+                      style: GoogleFonts.inter(
+                        fontWeight: FontWeight.w500,
+                        color: Colors.grey,
+                      ),
                     ),
                   ),
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 24),
                 ),
 
-                // 4. MENU ITEM 3 (SETTINGS - NON AKTIF)
-                ListTile(
-                  onTap: () {},
-                  leading: const Icon(Icons.settings_rounded, color: Colors.grey),
-                  title: Text(
-                    "Settings",
-                    style: GoogleFonts.inter(
-                      fontWeight: FontWeight.w500,
-                      color: Colors.grey,
+                const SizedBox(height: 4),
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  child: ListTile(
+                    onTap: () {},
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    leading: const Icon(Icons.settings_rounded, color: Colors.grey),
+                    title: Text(
+                      "Settings",
+                      style: GoogleFonts.inter(
+                        fontWeight: FontWeight.w500,
+                        color: Colors.grey,
+                      ),
                     ),
                   ),
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 24),
                 ),
-              ],
+              ], // akhir column side bar
             ),
           ),
 
