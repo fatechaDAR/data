@@ -24,14 +24,14 @@ class MyApp extends StatelessWidget {
           Theme.of(context).textTheme,
         ),
       ),
-      // PERBAIKAN 2: 'DashboardPage' huruf depan Besar
+      // PERBAIKAN 2: 'DashboardPage' 
       home: const DashboardPage(),
     );
   }
 }
 
 class DashboardPage extends StatelessWidget {
-  // PERBAIKAN 3: Constructor 'DashboardPage' huruf depan Besar
+  // PERBAIKAN 3: Constructor 'DashboardPage' 
   const DashboardPage({super.key});
 
   @override
@@ -66,7 +66,7 @@ class DashboardPage extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 12),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                      color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: ListTile(
