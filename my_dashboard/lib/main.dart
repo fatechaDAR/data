@@ -131,27 +131,139 @@ class DashboardPage extends StatelessWidget {
           Expanded(
             child: Container(
               color: Theme.of(context).colorScheme.background,
-              padding: const EdgeInsets.all(20),
               child: Column(
                 children: [
-                  // Header sederhana (Akan kita percantik nanti)
+                  // Bagian Header (Search Bar & Profile)
                   Container(
-                    height: 60,
-                    width: double.infinity,
+                    height: 80,
+                    padding: const EdgeInsets.symmetric(horizontal: 32),
                     color: Colors.white,
-                    alignment: Alignment.centerLeft,
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: const Text("Header Area"),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Selamat Datang !!",
+                              style: GoogleFonts.inter(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              "Perkembangan Belajar Anda !!",
+                              style: GoogleFonts.inter(
+                                fontSize: 14,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        Container(
+                          width: 250,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            color: Colors.grey[100],
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: Colors.grey[300]!),
+                          ),
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
+                          child: Row(
+                            children: [
+                              const Icon(Icons.search, color: Colors.grey),
+                              const SizedBox(width: 8),
+                              Text(
+                                "Search...",
+                                style: GoogleFonts.inter(color: Colors.grey),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                  
-                  const SizedBox(height: 20),
-                  
-                  // Area Konten Bawah
+
+                  // Area Konten Scrollable
                   Expanded(
-                    child: Container(
-                      width: double.infinity,
-                      color: Colors.white,
-                      child: const Center(child: Text("Main Content Area")),
+                    child: SingleChildScrollView(
+                      padding: const EdgeInsets.all(32),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                    Text(
+                      "Overview",
+                      style: GoogleFonts.inter(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold
+                      ),
+                    ),
+
+                    const SizedBox(height: 20),
+
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            height: 120,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(16),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.05),
+                                  blurRadius: 10,
+                                  offset: const Offset(0, 4),
+                                ),
+                              ],
+                            ),
+                            padding: const EdgeInsets.all(20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text("Courses in Progress", style: GoogleFonts.inter(color: Colors.grey)),
+                                const SizedBox(height: 8),
+                                Text("4", style:  GoogleFonts.inter(fontSize: 32, fontWeight: FontWeight.bold)),
+                              ],
+                            ),
+                          ),
+                        ),
+
+                        const SizedBox(width: 20),
+
+                        Expanded(
+                          child: Container(
+                            height: 120,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            child: const Center(child: Text("Card 2")),
+                          ),
+                        ),
+
+                        const SizedBox(width: 20),
+
+                        Expanded(
+                          child: Container(
+                            height: 120,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            child: const Center(child: Text("Card 3")),
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    const SizedBox(height: 500),
+                    const Text("Footer Area (Testing Scroll)"),
+                  ],
+                      ),
                     ),
                   ),
                 ],
