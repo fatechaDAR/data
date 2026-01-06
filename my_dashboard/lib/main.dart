@@ -205,57 +205,25 @@ class DashboardPage extends StatelessWidget {
 
                     Row(
                       children: [
-                        Expanded(
-                          child: Container(
-                            height: 120,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(16),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.05),
-                                  blurRadius: 10,
-                                  offset: const Offset(0, 4),
-                                ),
-                              ],
-                            ),
-                            padding: const EdgeInsets.all(20),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text("Courses in Progress", style: GoogleFonts.inter(color: Colors.grey)),
-                                const SizedBox(height: 8),
-                                Text("4", style:  GoogleFonts.inter(fontSize: 32, fontWeight: FontWeight.bold)),
-                              ],
-                            ),
-                          ),
+                        SummaryCard(
+                          title: "In Progress ",
+                          value: "4",
+                          icon: Icons.book,
+                          color: Color(0xFF009688),
                         ),
-
-                        const SizedBox(width: 20),
-
-                        Expanded(
-                          child: Container(
-                            height: 120,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                            child: const Center(child: Text("Card 2")),
-                          ),
+                        SizedBox(width: 20),
+                        SummaryCard(
+                          title: "Completed",
+                          value: "12",
+                          icon: Icons.check_circle,
+                          color: Colors.blue,
                         ),
-
-                        const SizedBox(width: 20),
-
-                        Expanded(
-                          child: Container(
-                            height: 120,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                            child: const Center(child: Text("Card 3")),
-                          ),
+                        SizedBox(width: 20),
+                        SummaryCard(
+                          title: "Certificates",
+                          value: "2",
+                          icon: Icons.workspace_premium,
+                          color: Colors.orange,
                         ),
                       ],
                     ),
@@ -268,6 +236,75 @@ class DashboardPage extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class SummaryCard extends StatelessWidget {
+  final String title;
+  final String value;
+  final IconData icon;
+  final Color color;
+
+  const SummaryCard({
+    super.key,
+    required this.title,
+    required this.value,
+    required this.icon,
+    required this.color,
+  });
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 120,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.09),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      padding: const EdgeInsets.all(20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: color.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Icon(icon, color: color, size: 20),
+              ),
+              const SizedBox(width: 12),
+              Text(
+                title,
+                style: GoogleFonts.inter(
+                  color: Colors.grey[700],
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500
+                )
+              ),
+            ],
+          ),
+          const Spacer(),
+          Text(
+            value,
+            style: GoogleFonts.inter(
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
             ),
           ),
         ],
