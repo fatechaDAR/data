@@ -244,6 +244,8 @@ class DashboardPage extends StatelessWidget {
   }
 }
 
+
+// coba refactor
 class SummaryCard extends StatelessWidget {
   final String title;
   final String value;
