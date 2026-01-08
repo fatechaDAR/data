@@ -34,6 +34,31 @@ class DashboardPage extends StatelessWidget {
   // PERBAIKAN 3: Constructor 'DashboardPage' 
   const DashboardPage({super.key});
 
+  Class DashboardPage extends StatelessWidget {
+    const DashboardPage({super.key});
+
+    final List<Map<String, dynamic>> courses = const [
+      {
+        "title": "Flutter Web Masterclass",
+        "instructor": "By Yui"
+        "progress": 0.75,
+        "color": Color(0xFF009688),
+      },
+      {
+      "title": "UI/UX Design Principles",
+      "instructor": "By Sarah",
+      "progress": 0.45, // 45%
+      "color": Colors.orange,
+      },
+      {
+      "title": "Python for Data Science",
+      "instructor": "By Budi",
+      "progress": 0.20, // 20%
+      "color": Colors.blue,
+      },
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -228,6 +253,29 @@ class DashboardPage extends StatelessWidget {
                       ],
                     ),
 
+                    const SizedBox(height: 32),
+
+                    Text(
+                      "Recent COurses",
+                      style: GoogleFonts.inter(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+
+                    const SizedBox(height: 16),
+
+                    Column(
+                      children: courses.map((course){
+                        return CourseItem(
+                          title: course['title'],
+                          instructor: course['instructor'],
+                          progress: course['progress'],
+                          color: course['color'],
+                        );
+                      }).toList(),
+                    ),
+
                     const SizedBox(height: 500),
                     const Text("Footer Area (Testing Scroll)"),
                   ],
@@ -246,6 +294,7 @@ class DashboardPage extends StatelessWidget {
 
 
 // coba refactor
+// widget Summary Card
 class SummaryCard extends StatelessWidget {
   final String title;
   final String value;
@@ -309,6 +358,100 @@ class SummaryCard extends StatelessWidget {
               color: Colors.black87,
             ),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+//widget Course Item
+class CourseItem extends StatelessWidget {
+  final String title;
+  final String instructor;
+  final double progress;
+  final Color color;
+
+  const CourseItem({
+    super.key,
+    required this.title,
+    required this.instructor,
+    required this.progress,
+    required this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.03),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+         Container(
+          width: 50,
+          height: 50,
+          decoration: BoxDecoration(
+            color: color.withOpacity(0.1),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Icon(Icons.play_circle_fill, color:color, size: 28),
+         ) ,
+
+         const SizedBox(width: 16),
+
+         Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: GoogleFonts.inter(fontSize: 16, fontWeight: FontWeight.bold,),
+              ),
+              Text(
+                instructor,
+                style: GoogleFonts.inter(fontSize: 12, color: Colors.grey,),
+              ),
+              const SizedBox(height: 8),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: LinearProgressIndicator(
+                  value: progress,
+                  backgroundColor: Colors.grey[200],
+                  color: color,
+                  minHeight: 6,
+                ),
+              ),
+            ],
+          ),
+         ),
+
+         const SizedBox(width: 24),
+
+         Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          decoration: BoxDecoration(
+            color: Colors.black,
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Text(
+            "Continue",
+            style: GoogleFonts.inter(
+              color: Colors.white,
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+         ),
         ],
       ),
     );
