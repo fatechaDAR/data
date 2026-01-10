@@ -34,30 +34,26 @@ class DashboardPage extends StatelessWidget {
   // PERBAIKAN 3: Constructor 'DashboardPage' 
   const DashboardPage({super.key});
 
-  Class DashboardPage extends StatelessWidget {
-    const DashboardPage({super.key});
-
-    final List<Map<String, dynamic>> courses = const [
-      {
-        "title": "Flutter Web Masterclass",
-        "instructor": "By Yui"
-        "progress": 0.75,
-        "color": Color(0xFF009688),
-      },
-      {
+  final List<Map<String, dynamic>> courses = const [
+    {
+      "title": "Flutter Web Masterclass",
+      "instructor": "By Yui",
+      "progress": 0.75,
+      "color": Color(0xFF009688),
+    },
+    {
       "title": "UI/UX Design Principles",
       "instructor": "By Sarah",
-      "progress": 0.45, // 45%
+      "progress": 0.45,
       "color": Colors.orange,
-      },
-      {
+    },
+    {
       "title": "Python for Data Science",
       "instructor": "By Budi",
-      "progress": 0.20, // 20%
+      "progress": 0.20,
       "color": Colors.blue,
-      },
-    ];
-  }
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -256,7 +252,7 @@ class DashboardPage extends StatelessWidget {
                     const SizedBox(height: 32),
 
                     Text(
-                      "Recent COurses",
+                      "Recent Courses",
                       style: GoogleFonts.inter(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -456,4 +452,77 @@ class CourseItem extends StatelessWidget {
       ),
     );
   }
+}
+
+// Sidebar jadi widget terpisah
+class SideMenu extends StatelessWidget {
+  const SideMenu({super.key});
+  
+  @override
+  Widget build(BuildContext Context) {
+    return Container(
+      wiidth: 250,
+      height: double.infinity,
+      color: Colors.white,
+      child: Column(
+        children: [
+          Container(
+            height: 80,
+            alignment: Alignment.centerLeft,
+            padding: const EdgeInsets. symmetric(horizontal: 24),
+            child: Text(
+              "My Learning.",
+              style: GoogleFonts.inter(
+                fontSize: 20,
+                fontWeight: FontWeight.w800,
+                color: const Color(0xFF009688),
+              ),
+            ),
+          ),
+
+          // Menu Items
+          padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: Container(
+              decoration: BoxDecoration(
+                color: const Color(0xFF009688).withOpacity(0.15),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: ListTile(
+                onTap: () {},
+                leading: const Icon(Icons.dashboard_rounded, color: Color(0xFF009688)),
+                title: Text(
+                  "Dashboard",
+                  style: GoogleFonts.inter(
+                    fontWeight: FontWeight.bold, color: const Color(0xFF009688)
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 4),
+            _buildMenuItem(Icon.book_rounded, "My Courses"),
+            const SizedBox(height: 4),
+            _buildMenuItem(Icon.settings_rounded, "Settings"),
+          ),
+        ],
+      ),
+    ),
+  };
+}
+
+Widget _buildMenuItem(IconData, String title) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 12),
+    child: ListTile(
+      onTap: () {},
+      leading: Icon(icon, color:Colors.grey),
+      title: Text(
+        title,
+        style: GoogleFonts.inter(
+          fontWeight: FontWeight.w500,
+          color: Colors.grey
+        ),
+      ),
+    );
+  )
 }

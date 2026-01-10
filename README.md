@@ -1,3 +1,1 @@
-# PERKENALAN
-
 entahlah ini apaan
